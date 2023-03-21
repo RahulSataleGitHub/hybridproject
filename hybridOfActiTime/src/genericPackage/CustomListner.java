@@ -9,6 +9,7 @@ public class CustomListner extends BaseTest implements ITestListener{
 
 	@Override
 	public void onTestStart(ITestResult result) {
+		Reporter.log("the test has been started",true);
 		
 	}
 
@@ -47,6 +48,7 @@ public class CustomListner extends BaseTest implements ITestListener{
 
 	@Override
 	public void onFinish(ITestContext context) {
+		Reporter.log("the best is completed",true);
 		
 	}
 

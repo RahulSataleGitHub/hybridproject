@@ -24,26 +24,26 @@ public class BaseTest implements IAutoConstant{
 		String browserValue = flib.readPropertyData(PROP_PATH,"Browser");
 		String url = flib.readPropertyData(PROP_PATH, "Url");
 		
-		if (browserValue.equals("chrome")) 
+		if (browserValue.equalsIgnoreCase("chrome")) 
 		{
-			System.setProperty(CHROME_KEY, CHROME_VALUE);
+			System.setProperty(CHROME_KEY, CHROME_PATH);
 			driver=new ChromeDriver();
 			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
 			driver.get(url);
 		}
-		else if (browserValue.equals("edge")) 
+		else if (browserValue.equalsIgnoreCase("edge")) 
 		{
-			System.setProperty(EDGE_KEY, EDGE_VALUE);
+			System.setProperty(EDGE_KEY, EDGE_PATH);
 			driver=new EdgeDriver();
 			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
 			driver.get(url);
 			
 		}
 		else
 		{
-			Reporter.log("enter correct browser!!!",true);
+			Reporter.log("invalid browser!!!",true);
 		}
 	}
 	
@@ -54,13 +54,13 @@ public class BaseTest implements IAutoConstant{
 		   {
 			   TakesScreenshot ts = (TakesScreenshot) driver;
 			   File src = ts.getScreenshotAs(OutputType.FILE);
-			   File dest = new File("./screenShot"+methodName+".png");
+			   File dest = new File(SCREENSHOT_PATH+methodName+".png");
 			   Files.copy(src, dest);
 		   } 
 		   
 		   catch (Exception e) 
 		   {
-			
+			// To DO Handle Exception
 		}
 	   }
 	

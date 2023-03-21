@@ -17,8 +17,6 @@ public class ActiTimeTestValidLogin extends BaseTest{
 		LoginPage lp = new LoginPage(driver);
 		lp.actiTimeValidLogin(flib.readPropertyData(PROP_PATH,"Username"),flib.readPropertyData(PROP_PATH,"Password"));
 		
-		
-		
 	}
 
 }
